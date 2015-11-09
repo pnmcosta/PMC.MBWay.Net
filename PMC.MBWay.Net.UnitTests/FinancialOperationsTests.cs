@@ -10,6 +10,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PMC.MBWay.Net.API.FinancialOperations;
+using System.Threading;
 
 namespace PMC.MBWay.Net.UnitTests
 {
@@ -37,10 +38,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(amount, result.amount);
             Assert.AreEqual(operationId, result.merchantOperationID);
             Assert.AreEqual(currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
 
@@ -66,10 +67,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(amount, result.amount);
             Assert.AreEqual(operationId, result.merchantOperationID);
             Assert.AreEqual(currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
 
@@ -80,6 +81,8 @@ namespace PMC.MBWay.Net.UnitTests
         public void TestAuthorizationCancellation()
         {
             TestPurchaseAuthorization();
+
+            ApprovalSleep(); // allow for aproval in app and async callback
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
@@ -97,7 +100,7 @@ namespace PMC.MBWay.Net.UnitTests
             var newOperationId = MBWayClient.GetUniqID();
             request.financialOperation = new financialOperation
             {
-                amount = currentResult.amount, 
+                amount = currentResult.amount,
                 currencyCode = currentResult.currencyCode,
                 merchantOprId = newOperationId,
                 operationTypeCode = FinancialOperationTypes.AUTHORIZATION_CANCEL
@@ -105,10 +108,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
@@ -121,6 +124,8 @@ namespace PMC.MBWay.Net.UnitTests
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
+
+            ApprovalSleep(); // allow for aproval in app and async callback
 
             var request = GetRequest();
             request.referencedFinancialOperation = new financialOperation
@@ -143,10 +148,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
@@ -158,6 +163,8 @@ namespace PMC.MBWay.Net.UnitTests
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
+
+            ApprovalSleep(); // allow for aproval in app and async callback
 
             var request = GetRequest();
             request.referencedFinancialOperation = new financialOperation
@@ -180,10 +187,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
@@ -195,6 +202,8 @@ namespace PMC.MBWay.Net.UnitTests
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
+
+            ApprovalSleep(); // allow for aproval in app and async callback
 
             var request = GetRequest();
             request.referencedFinancialOperation = new financialOperation
@@ -215,12 +224,13 @@ namespace PMC.MBWay.Net.UnitTests
                 operationTypeCode = FinancialOperationTypes.PURCHASE_RETURN
             };
 
+
             var result = this.GetClient().RequestFinancialOperation(request);
 
+            Assert.IsTrue(result.IsValid);
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(result.IsValid);
             Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }

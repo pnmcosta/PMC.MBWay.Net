@@ -65,8 +65,6 @@ namespace PMC.MBWay.Net
 
         public requestFinancialOperationResult RequestFinancialOperation(requestFinancialOperationRequest request)
         {
-            SetCredentials(_financialOperationFactory);
-
             IClientChannel channel = (IClientChannel)_financialOperationFactory.CreateChannel();
 
             bool success = false;
@@ -94,8 +92,6 @@ namespace PMC.MBWay.Net
         }
         public createMerchantAliasResult CreateMerchantAlias(createMerchantAliasRequest request)
         {
-            SetCredentials(_createMerchantAliasFactory);
-
             IClientChannel channel = (IClientChannel)_createMerchantAliasFactory.CreateChannel();
 
             bool success = false;
@@ -123,8 +119,6 @@ namespace PMC.MBWay.Net
         }
         public removeMerchantAliasResult RemoveMerchantAlias(removeMerchantAliasRequest request)
         {
-            SetCredentials(_removeMerchantAliasFactory);
-
             IClientChannel channel = (IClientChannel)_createMerchantAliasFactory.CreateChannel();
 
             bool success = false;
@@ -148,10 +142,7 @@ namespace PMC.MBWay.Net
         private void InitFactory<TChannel>(ref ChannelFactory<TChannel> channelFactory)
         {
             channelFactory = new ChannelFactory<TChannel>(this.GetBinding<TChannel>(), this.GetEndpoint<TChannel>());
-        }
-        private void SetCredentials<TChannel>(ChannelFactory<TChannel> factory)
-        {
-            factory.Credentials.ClientCertificate.Certificate = _certificate;
+            channelFactory.Credentials.ClientCertificate.Certificate = _certificate;
         }
         private string GetEndpoint<TChannelType>()
         {

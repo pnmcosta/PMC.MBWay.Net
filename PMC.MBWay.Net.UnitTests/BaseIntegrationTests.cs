@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace PMC.MBWay.Net.UnitTests
 {
@@ -29,7 +30,10 @@ namespace PMC.MBWay.Net.UnitTests
 
             return client;
         }
-
+        protected void ApprovalSleep()
+        {
+            Thread.Sleep(int.Parse(ConfigurationManager.AppSettings["APPROVAL_SLEEP"]));
+        }
         protected MBWayConfig GetConfig()
         {
             return new MBWayConfig
