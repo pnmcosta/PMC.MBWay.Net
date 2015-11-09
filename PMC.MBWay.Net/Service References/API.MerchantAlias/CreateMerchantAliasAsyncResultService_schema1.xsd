@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservices.sibsmerchant.com/" xmlns:ns1="http://alias.services.merchant.channelmanagermsp.sibs/" targetNamespace="http://webservices.sibsmerchant.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="CreateMerchantAliasAsyncResultService_schema2.xsd" namespace="http://alias.services.merchant.channelmanagermsp.sibs/" />
+  <xs:element name="createAliasResult" type="tns:createAliasResult" />
+  <xs:element name="createAliasResultResponse" type="tns:createAliasResultResponse" />
+  <xs:complexType name="createAliasResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="ns1:createMerchantAliasResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAliasResultResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

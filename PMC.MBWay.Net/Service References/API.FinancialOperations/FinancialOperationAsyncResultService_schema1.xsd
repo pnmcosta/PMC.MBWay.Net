@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservices.sibsmerchant.com/" xmlns:ns1="http://financial.services.merchant.channelmanagermsp.sibs/" targetNamespace="http://webservices.sibsmerchant.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="FinancialOperationAsyncResultService_schema2.xsd" namespace="http://financial.services.merchant.channelmanagermsp.sibs/" />
+  <xs:element name="financialOperationResult" type="tns:financialOperationResult" />
+  <xs:element name="financialOperationResultResponse" type="tns:financialOperationResultResponse" />
+  <xs:complexType name="financialOperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="ns1:requestFinancialOperationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="financialOperationResultResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

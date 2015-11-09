@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="requestFinancialOperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:int" />
+      <xs:element minOccurs="0" name="currencyCode" type="xs:string" />
+      <xs:element minOccurs="0" name="merchantOperationID" type="xs:string" />
+      <xs:element name="statusCode" type="xs:string" />
+      <xs:element name="timestamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="token" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://alias.services.merchant.channelmanagermsp.sibs/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" name="MerchantAliasWSService" targetNamespace="http://alias.services.merchant.channelmanagermsp.sibs/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="MerchantAliasWSPortBinding_WSAM_Addressing_Policy">
+    <wsam:Addressing wsp:Optional="true">
+      <wsp:Policy />
+    </wsam:Addressing>
+  </wsp:Policy>
+  <types>
+    <xsd:schema targetNamespace="http://alias.services.merchant.channelmanagermsp.sibs/" version="1.0">
+      <xsd:element name="createMerchantAlias" type="tns:createMerchantAlias" />
+      <xsd:element name="createMerchantAliasResponse" type="tns:createMerchantAliasResponse" />
+      <xsd:element name="removeMerchantAlias" type="tns:removeMerchantAlias" />
+      <xsd:element name="removeMerchantAliasResponse" type="tns:removeMerchantAliasResponse" />
+      <xsd:complexType name="removeMerchantAlias">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="arg0" type="tns:removeMerchantAliasRequest" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="removeMerchantAliasRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" default="N0002" name="messageType" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="alias" type="tns:alias" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="merchant" type="tns:merchant" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="messageProperties" type="tns:messageProperties" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="alias">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="aliasName" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="aliasTypeCde">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="merchant">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="iPAddress">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="15" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="posId">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="9" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="messageProperties">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" default="01" name="channel">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" default="1" name="apiVersion">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="5" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="channelTypeCode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="networkCode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="serviceType" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="timestamp" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="removeMerchantAliasResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="return" type="tns:removeMerchantAliasResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="removeMerchantAliasResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="alias" type="tns:alias" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="statusCode">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="timestamp" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createMerchantAlias">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="arg0" type="tns:createMerchantAliasRequest" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createMerchantAliasRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" default="N0001" name="messageType">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="5" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="alias" type="tns:alias" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="merchant" type="tns:merchant" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="messageProperties" type="tns:messageProperties" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="newAlias" type="tns:alias" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createMerchantAliasResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="return" type="tns:createMerchantAliasResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createMerchantAliasResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="alias" type="tns:alias" />
+          <xsd:element minOccurs="0" name="operationId" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="statusCode">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="1" maxOccurs="1" name="timestamp" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="token" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="removeMerchantAlias">
+    <part name="parameters" element="tns:removeMerchantAlias" />
+  </message>
+  <message name="removeMerchantAliasResponse">
+    <part name="parameters" element="tns:removeMerchantAliasResponse" />
+  </message>
+  <message name="createMerchantAlias">
+    <part name="parameters" element="tns:createMerchantAlias" />
+  </message>
+  <message name="createMerchantAliasResponse">
+    <part name="parameters" element="tns:createMerchantAliasResponse" />
+  </message>
+  <portType name="MerchantAliasWSCreate">
+    <operation name="createMerchantAlias">
+      <input wsaw:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest" wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasRequest" message="tns:createMerchantAlias" />
+      <output wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/createMerchantAliasResponse" message="tns:createMerchantAliasResponse" />
+    </operation>
+  </portType>
+  <portType name="MerchantAliasWSRemove">
+    <operation name="removeMerchantAlias">
+      <input wsaw:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasRequest" wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasRequest" message="tns:removeMerchantAlias" />
+      <output wsam:Action="http://alias.services.merchant.channelmanagermsp.sibs/MerchantAliasWS/removeMerchantAliasResponse" message="tns:removeMerchantAliasResponse" />
+    </operation>
+  </portType>
+  <binding name="MerchantAliasWSPortBindingCreate" type="tns:MerchantAliasWSCreate">
+    <wsaw:UsingAddressing required="false" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="createMerchantAlias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MerchantAliasWSPortBindingRemove" type="tns:MerchantAliasWSRemove">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="removeMerchantAlias">
+      <soap:operation soapAction="http://alias.services.merchant.channelmanagermsp.sibs/removeMerchantAlias" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MerchantAliasWSService">
+    <port name="MerchantAliasWSPortCreate" binding="tns:MerchantAliasWSPortBindingCreate">
+      <soap:address location="http://127.0.0.1:14000/Merchant/createMerchantAliasWS" />
+    </port>
+    <port name="MerchantAliasWSPortRemove" binding="tns:MerchantAliasWSPortBindingRemove">
+      <soap:address location="http://127.0.0.1:14000/Merchant/removeMerchantAliasWS" />
+    </port>
+  </service>
+</definitions>

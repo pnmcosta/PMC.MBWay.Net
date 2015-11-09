@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMC.MBWay.Net", "PMC.MBWay.Net\PMC.MBWay.Net.csproj", "{D7AC37C5-AAC9-41DC-8B88-D118059671BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMC.MBWay.Net.UnitTests", "PMC.MBWay.Net.UnitTests\PMC.MBWay.Net.UnitTests.csproj", "{ADEE64C6-6B8A-4B35-850F-2B66729EA958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMC.MBWay.Net.TestSite", "PMC.MBWay.Net.TestSite\PMC.MBWay.Net.TestSite.csproj", "{181D46DA-0135-4683-9941-0A9C406412B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7AC37C5-AAC9-41DC-8B88-D118059671BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7AC37C5-AAC9-41DC-8B88-D118059671BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7AC37C5-AAC9-41DC-8B88-D118059671BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7AC37C5-AAC9-41DC-8B88-D118059671BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADEE64C6-6B8A-4B35-850F-2B66729EA958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEE64C6-6B8A-4B35-850F-2B66729EA958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEE64C6-6B8A-4B35-850F-2B66729EA958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEE64C6-6B8A-4B35-850F-2B66729EA958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{181D46DA-0135-4683-9941-0A9C406412B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{181D46DA-0135-4683-9941-0A9C406412B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{181D46DA-0135-4683-9941-0A9C406412B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{181D46DA-0135-4683-9941-0A9C406412B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pmcdigital.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PMC.MBWay.Net\\PMC.MBWay.Net.csproj
+		SccProjectName1 = PMC.MBWay.Net
+		SccLocalPath1 = PMC.MBWay.Net
+		SccProjectUniqueName2 = PMC.MBWay.Net.UnitTests\\PMC.MBWay.Net.UnitTests.csproj
+		SccProjectName2 = PMC.MBWay.Net.UnitTests
+		SccLocalPath2 = PMC.MBWay.Net.UnitTests
+		SccProjectUniqueName3 = PMC.MBWay.Net.TestSite\\PMC.MBWay.Net.TestSite.csproj
+		SccProjectName3 = PMC.MBWay.Net.TestSite
+		SccLocalPath3 = PMC.MBWay.Net.TestSite
+	EndGlobalSection
+EndGlobal

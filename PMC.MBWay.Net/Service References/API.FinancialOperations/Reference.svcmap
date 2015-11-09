@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3f38d2cb-6f70-4bca-8168-e50c7ecdce29" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\tfs\PMC\PMC.MBWay.Net\PMC.MBWay.Net\wsdl\[WSDL] MerchantFinancialOperationWSService.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="C:\tfs\PMC\PMC.MBWay.Net\PMC.MBWay.Net\wsdl\FinancialOperationAsyncResultService.wsdl" Protocol="file" SourceId="2" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MerchantFinancialOperationWSService1.wsdl" MetadataType="Wsdl" ID="498f7c49-9176-41c1-ad58-278b29861123" SourceId="1" SourceUrl="file:///C:/tfs/PMC/PMC.MBWay.Net/PMC.MBWay.Net/wsdl/[WSDL] MerchantFinancialOperationWSService.wsdl" />
+    <MetadataFile FileName="FinancialOperationAsyncResultService.wsdl" MetadataType="Wsdl" ID="0288badf-7b0e-4514-9936-4105832d56b4" SourceId="2" SourceUrl="file:///C:/tfs/PMC/PMC.MBWay.Net/PMC.MBWay.Net/wsdl/FinancialOperationAsyncResultService.wsdl" />
+    <MetadataFile FileName="FinancialOperationAsyncResultService_schema2.xsd" MetadataType="Schema" ID="a9c6064c-adb4-434a-b65a-b63596e9df86" SourceId="2" SourceUrl="file:///C:/tfs/PMC/PMC.MBWay.Net/PMC.MBWay.Net/wsdl/FinancialOperationAsyncResultService_schema2.xsd" />
+    <MetadataFile FileName="FinancialOperationAsyncResultService_schema1.xsd" MetadataType="Schema" ID="9b06ef80-4d70-4828-a40b-334944df3e2a" SourceId="2" SourceUrl="file:///C:/tfs/PMC/PMC.MBWay.Net/PMC.MBWay.Net/wsdl/FinancialOperationAsyncResultService_schema1.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

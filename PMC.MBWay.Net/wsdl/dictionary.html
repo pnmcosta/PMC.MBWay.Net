@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h2>CÓDIGOS DE RETORNO</h2>
+    <table border="1">
+<tbody>
+<tr>
+<td style="text-align: center"><strong>Tipo</strong></td>
+<td style="text-align: center"><strong>Código</strong></td>
+<td style="text-align: center"><strong>Descrição</strong></td>
+<td style="text-align: left"><strong>Ocorrência</strong></td>
+<td style="text-align: left"><strong>Sugestão de mensagem</strong></td>
+</tr>
+<tr>
+<td style="text-align: center" rowspan="3">Sucesso</td>
+<td style="text-align: center">000</td>
+<td style="text-align: center">Sucesso</td>
+<td>Operação concluída com sucesso.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve dar seguimento ao processo de compra.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">010</td>
+<td style="text-align: center"><em>Alias</em> rejeitado na aplicação</td>
+<td>Utilizador rejeita associação de <em>Alias</em>.</td>
+<td><strong>Não foi possível concluir a operação de associação de identificador devido a recusa na aplicação.</strong></td>
+</tr>
+<tr>
+<td style="text-align: center">020</td>
+<td style="text-align: center">Operação financeira recusada na aplicação</td>
+<td>Utilizador rejeita Operação Financeira.</td>
+<td><strong>Não foi possível concluir a operação de compra devido a recusa na aplicação.</strong></td>
+</tr>
+<tr>
+<td rowspan="5">&nbsp;Erros Gerais</td>
+<td style="text-align: center">100</td>
+<td style="text-align: center">Erro interno do serviço</td>
+<td>Trata-se de erros de caráter excecional não previstos quando o processamento da mensagem falha e o erro não pode ser enquadrado em nenhuma das categorias definidas.</td>
+<td><strong>Não foi possível concluir a operação. </strong>
+<p><em>O Comerciante deve decidir se tenta novamente ou dá por finalizado o processo de compra.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">101</td>
+<td style="text-align: center"><em>Timeout</em> de execução</td>
+<td>O tempo máximo definido para a receção de uma resposta foi atingido.</td>
+<td>
+<p><strong>Não foi possível concluir a operação de &lt;inserir ação&gt; por ter expirado o tempo para resposta.</strong></p>
+<p><em>Ou</em></p>
+<p><strong>Operação expirada, por favor tente novamente.</strong></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">102</td>
+<td style="text-align: center">Erro na validação do conteúdo da mensagem</td>
+<td>A mensagem enviada não está de acordo com o formato especificado para o serviço invocado.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar a construção da mensagem enviada.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">103</td>
+<td style="text-align: center">POS inválido</td>
+<td>Não foi encontrado o identificador de POS enviado.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar a informação enviada no campo posId.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">104</td>
+<td style="text-align: center">Operação recusada. Problema com o serviço do Utilizador.</td>
+<td>A operação não é permitida ao Utilizador devido a problemas no seu serviço MB WAY.
+<p>Ex.: O serviço do Utilizador encontra-se bloqueado.</p>
+</td>
+<td><strong>Operação não permitida – Verifique o estado do seu serviço.</strong></td>
+</tr>
+<tr>
+<td rowspan="4">&nbsp;Erros de <em>Alias</em></td>
+<td style="text-align: center">110</td>
+<td style="text-align: center"><em>Tipo de Alias</em> não autorizado para o Comerciante</td>
+<td>O Comerciante tenta criar um <em>Alias</em> de um tipo para o qual não foi previamente autorizado.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se está a enviar um tipo de Alias que já tenha sido autorizado a usar.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">111</td>
+<td style="text-align: center">Formato de <em>Alias</em> inválido</td>
+<td>O formato do <em>Alias</em> enviado não corresponde ao <em>Tipo de Alias</em> definido.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se a informação enviada no campo aliasName corresponde com o tipo definido em aliasTypeCde.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">112</td>
+<td style="text-align: center"><em>Alias</em> duplicado</td>
+<td>O <em>Alias</em> já foi criado anteriormente.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se está a tentar fazer a criação em duplicado de um Alias.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">113</td>
+<td style="text-align: center"><em>Alias</em> desconhecido</td>
+<td>O <em>Alias</em> usado como identificador não foi encontrado.</td>
+<td><strong>Não foi possível concluir a operação, por favor verifique os dados introduzidos.</strong></td>
+</tr>
+<tr>
+<td rowspan="5">&nbsp;Erros de Operações Financeiras</td>
+<td style="text-align: center">120</td>
+<td style="text-align: center">Identificação de operação financeira duplicada</td>
+<td>O Comerciante submete uma operação com o mesmo ID de outra enviada anteriormente.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se não está a enviar um pedido de compra duplicado.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">121</td>
+<td style="text-align: center">Tipo de operação financeira inválido</td>
+<td>O tipo de operação financeira enviada não foi encontrado.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar a informação enviada no campo operationTypeCode</em>.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">122</td>
+<td style="text-align: center">Operação recusada</td>
+<td>Operação recusada ao Utilizador.</td>
+<td><strong>Operação não permitida – Verifique o estado do seu serviço.</strong></td>
+</tr>
+<tr>
+<td style="text-align: center">123</td>
+<td style="text-align: center">Operação financeira não encontrada</td>
+<td>Operação de Referência não encontrada ou parâmetros enviados incorretos.
+<p>Ex.: Devolução sobre uma compra que não existe.</p>
+</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se está a enviar a informação correta sobre a operação que está a referenciar.</em></p>
+</td>
+</tr>
+<tr>
+<td style="text-align: center">124</td>
+<td style="text-align: center">Impossibilidade de associar <em>Alias</em></td>
+<td>Não foi encontrada nenhuma Operação Financeira efetuada nos últimos 30 minutos para o Utilizador indicado. Como tal, não é possível associar um <em>Alias</em> de Comerciante.</td>
+<td><strong>N.A.</strong>
+<p><em>O Comerciante deve validar se foi completada com sucesso uma operação financeira antes do pedido de associação de Alias de Comerciante.</em></p>
+</td>
+</tr>
+</tbody>
+</table>
+    <h2>DICIONÁRIO DE DADOS</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Entidade</th>
+                <th>Atributo/Elemento</th>
+                <th style="text-align: center">Tipo</th>
+                <th style="text-align: center">Tamanho</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td><em>messageType</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">5</td>
+                <td>Código identificativo da mensagem.</td>
+                <td>
+                    Criação de <em>Alias</em> de Comerciante – ‘N0001’<br>
+                    Remoção de <em>Alias</em> de Comerciante – ‘N0002’<br>
+                    Operação financeira – ‘N0003’
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>aditionalData</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">100</td>
+                <td>
+                    Descritivo da compra.<br>
+                    Tem informação que o Comerciante pretende apresentar ao seu cliente, relativamente ao que está a ser comprado.<br>
+                    Esta informação aparece no ecrã de confirmação de compra por parte do Utilizador na <em>app</em> MB WAY.
+                </td>
+                <td><strong>&nbsp;</strong></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><em>Alias</em></td>
+                <td><em>aliasName</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">55</td>
+                <td><em>Alias</em> identificativo do serviço que poderá ser qualquer <em>Alias</em> já registado e confirmado.</td>
+                <td>Telemóvel, e-mail, etc.</td>
+            </tr>
+            <tr>
+                <td><em>aliasTypeCde</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">3</td>
+                <td>Código do tipo de <em>Alias.</em></td>
+                <td>Fornecido pela SIBS FPS</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>newAlias</em></td>
+                <td style="text-align: center">Ver entidade<em> Alias</em></td>
+                <td></td>
+                <td>Novo <em>Alias</em> para ser registado (o Comerciante tem de estar autorizado a criar / remover o tipo de <em>Alias</em> em questão).</td>
+                <td><strong>&nbsp;</strong></td>
+            </tr>
+            <tr>
+                <td rowspan="5"><em>FinancialOperation</em></td>
+                <td><em>operationTypeCode</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">3</td>
+                <td>Catálogo de tipos de operações financeiras.</td>
+                <td>
+                    ‘022’- Compra<p></p>
+                    <p>‘023’ – Devolução</p>
+                    <p>‘024’ – Autorização de compra</p>
+                    <p>‘025’ – Compra após autorização</p>
+                    <p>‘048’ – Anulação</p>
+                </td>
+            </tr>
+            <tr>
+                <td><em>merchantOprId</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">20</td>
+                <td>Identificador único de cada operação.</td>
+                <td>De acordo com o sistema do Comerciante.</td>
+            </tr>
+            <tr>
+                <td><em>amount</em></td>
+                <td style="text-align: center"><em>Integer</em></td>
+                <td style="text-align: center">N.A.</td>
+                <td>
+                    Montante da compra ou autorização.<br>
+                    Preenchido com, no mínimo, 3 algarismos, sendo os dois últimos correspondentes às casas decimais.<br>
+                    O preenchimento deste atributo tem por base a regra definida no <em>currencyCode</em>.<br>
+                    Deve seguir a formatação: ausência de vírgula ou ponto e inclusão sempre dos cêntimos, mesmo sendo zeros.<br>
+                    Exemplo: Para se referir 3 euros, deverá colocar-se 300.
+                </td>
+                <td><strong>&nbsp;</strong></td>
+            </tr>
+            <tr>
+                <td><em>currencyCode</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">4</td>
+                <td>Código monetário (os 3 primeiros algarismos indicam a moeda, o último indica o n.º de casas decimais).</td>
+                <td>‘9782’</td>
+            </tr>
+            <tr>
+                <td><em>referencedFinancialOperation</em></td>
+                <td style="text-align: center">Ver entidade <em>FinancialOperation</em></td>
+                <td></td>
+                <td>Detalhes da operação financeira prévia à qual se está a efetuar uma nova ação.</td>
+                <td><strong>&nbsp;</strong></td>
+            </tr>
+            <tr>
+                <td rowspan="2"><em>Merchant</em></td>
+                <td><em>iPAddress</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">15</td>
+                <td>Endereço de IP do Comerciante.</td>
+                <td><em>&nbsp;</em></td>
+            </tr>
+            <tr>
+                <td><em>posId</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">9</td>
+                <td>Identificador do POS do Comerciante.</td>
+                <td><em>&nbsp;</em></td>
+            </tr>
+            <tr>
+                <td rowspan="6"><em>MessageProperties</em></td>
+                <td><em>channel</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">2</td>
+                <td>Identificador do canal MB WAY.</td>
+                <td>
+                    ‘01’ – <em>Mobile</em><br>
+                    ‘02’ – TV<br>
+                    ‘03’ – <em>Web</em><br>
+                    ‘04’ – <em>Vending</em><br>
+                    ‘05’ – Ponto de Venda
+                </td>
+            </tr>
+            <tr>
+                <td><em>apiVersion</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">5</td>
+                <td>Versão da API a usar.</td>
+                <td>‘1’</td>
+            </tr>
+            <tr>
+                <td><em>channelTypeCode</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">10</td>
+                <td>Catálogo de tipos de canais disponíveis.</td>
+                <td>‘VPOS’</td>
+            </tr>
+            <tr>
+                <td><em>networkCode</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">10</td>
+                <td>Identificador da rede.</td>
+                <td>‘MULTIB’</td>
+            </tr>
+            <tr>
+                <td><em>serviceType</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">2</td>
+                <td>Identificador do serviço.</td>
+                <td>‘01’</td>
+            </tr>
+            <tr>
+                <td><em>timestamp</em></td>
+                <td style="text-align: center"><em>DateTime</em></td>
+                <td style="text-align: center">N.A.</td>
+                <td>Data e hora em que a operação foi registada.</td>
+                <td>De acordo com o sistema do Comerciante.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>merchantOperationId</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">20</td>
+                <td>Código único da operação previamente enviado pelo Comerciante.</td>
+                <td>Ver elemento <em>merchantOprId</em>.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>statusCode</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">3</td>
+                <td>Código de retorno.</td>
+                <td>(Consultar tabela Códigos de retorno dos <em>webservices</em>).</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>token</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">32</td>
+                <td><em>Token</em> de segurança que é enviado pela SIBS FPS na comunicação síncrona / assíncrona e que deve ser guardado para validação da resposta de confirmação.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><em>operationId</em></td>
+                <td style="text-align: center"><em>String</em></td>
+                <td style="text-align: center">10</td>
+                <td>ID da operação pendente registada.</td>
+                <td>Ver elemento <em>merchantOprId</em>.</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

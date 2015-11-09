@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="MerchantFinancialOperationWSService" resourceRoot="" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" id="b8cd410e-b428-4731-addd-01ef56befac7" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="200508" name="MerchantFinancialOperationWSPortBinding" type="wsdl" bindingName="{http://financial.services.merchant.channelmanagermsp.sibs/}MerchantFinancialOperationWSPortBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/david_000/Documents/Visual%20Studio%202013/Projects/MBWay4Merchants/MBWay4Merchants/WSDL/MerchantFinancialOperationWSService.wsdl" id="00c3ebaa-caaf-40e6-abed-47731ed8001b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.dotnet.DotNetWsdlAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="protocol" value="SOAP"/>
+  <con:entry key="base url" value=""/>
+  <con:entry key="password" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="namespace" value=""/>
+  <con:entry key="output directory" value=""/>
+  <con:entry key="username" value=""/>
+  <con:entry key="proxy password" value=""/>
+  <con:entry key="Use cached WSDL" value="true"/>
+  <con:entry key="order" value="false"/>
+  <con:entry key="proxy domain" value=""/>
+  <con:entry key="serverInterface" value="false"/>
+  <con:entry key="sharetypes" value="false"/>
+  <con:entry key="proxy" value=""/>
+  <con:entry key="domain" value=""/>
+  <con:entry key="enableDataBinding" value="false"/>
+  <con:entry key="WSDL" value="file:/C:/Users/david_000/Documents/Visual%20Studio%202013/Projects/MBWay4Merchants/MBWay4Merchants/WSDL/MerchantFinancialOperationWSService.wsdl"/>
+  <con:entry key="url key" value=""/>
+  <con:entry key="language" value="CS"/>
+  <con:entry key="proxy username" value=""/>
+  <con:entry key="fields" value="false"/>
+</xml-fragment>]]></con:setting></con:settings><con:definitionCache type="TEXT" rootPart="file:\C:\Users\david_000\Documents\Visual%20Studio%202013\Projects\MBWay4Merchants\MBWay4Merchants\WSDL\MerchantFinancialOperationWSService.wsdl"><con:part><con:url>file:\C:\Users\david_000\Documents\Visual%20Studio%202013\Projects\MBWay4Merchants\MBWay4Merchants\WSDL\MerchantFinancialOperationWSService.wsdl</con:url><con:content><![CDATA[<definitions name="MerchantFinancialOperationWSService" targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://financial.services.merchant.channelmanagermsp.sibs/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema version="1.0" targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/">
+      <xsd:element name="requestFinancialOperation" type="tns:requestFinancialOperation"/>
+      <xsd:element name="requestFinancialOperationResponse" type="tns:requestFinancialOperationResponse"/>
+      <xsd:complexType name="requestFinancialOperation">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="tns:requestFinancialOperationRequest" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="requestFinancialOperationRequest">
+        <xsd:sequence>
+          <xsd:element name="messageType" type="xsd:string" minOccurs="1" default="N0003" maxOccurs="1"/>
+          <xsd:element name="aditionalData" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="alias" type="tns:alias" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="financialOperation" type="tns:financialOperation" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="referencedFinancialOperation" type="tns:financialOperation" minOccurs="0"/>
+          <xsd:element name="merchant" type="tns:merchant" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="messageProperties" type="tns:messageProperties" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="alias">
+        <xsd:sequence>
+          <xsd:element name="aliasName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="aliasTypeCde" maxOccurs="1" minOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="3"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="financialOperation">
+        <xsd:sequence>
+          <xsd:element name="amount" type="xsd:int" maxOccurs="1" minOccurs="1"/>
+          <xsd:element name="currencyCode" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+          <xsd:element name="operationTypeCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="merchantOprId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="merchant">
+        <xsd:sequence>
+          <xsd:element name="iPAddress" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="15"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="posId" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="9"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="messageProperties">
+        <xsd:sequence>
+          <xsd:element name="channel" minOccurs="1" default="01" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="2"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="apiVersion" minOccurs="1" default="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="5"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="channelTypeCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="networkCode" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="serviceType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="requestFinancialOperationResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="tns:requestFinancialOperationResult" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="requestFinancialOperationResult">
+        <xsd:sequence>
+          <xsd:element name="amount" type="xsd:int" minOccurs="0"/>
+          <xsd:element name="currencyCode" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="merchantOperationID" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="statusCode" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:length value="3"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="requestFinancialOperationResponse">
+    <part name="parameters" element="tns:requestFinancialOperationResponse"></part>
+  </message>
+  <message name="requestFinancialOperation">
+    <part name="parameters" element="tns:requestFinancialOperation"></part>
+  </message>
+  <portType name="MerchantFinancialOperationWS">
+    <operation name="requestFinancialOperation">
+      <input message="tns:requestFinancialOperation" wsaw:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest" wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest"></input>
+      <output message="tns:requestFinancialOperationResponse" wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationResponse"></output>
+    </operation>
+  </portType>
+  <binding name="MerchantFinancialOperationWSPortBinding" type="tns:MerchantFinancialOperationWS">
+    <wsaw:UsingAddressing required="false"/>
+    <wsp:PolicyReference URI="#MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy"/>
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="requestFinancialOperation">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="MerchantFinancialOperationWSService">
+    <port name="MerchantFinancialOperationWSPort" binding="tns:MerchantFinancialOperationWSPortBinding">
+      <soap:address location="http://127.0.0.1:14000/Merchant/requestFinancialOperationWS"/>
+    </port>
+  </service>
+  <wsp:Policy wsu:Id="MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy">
+    <wsam:Addressing wsp:Optional="true">
+      <wsp:Policy/>
+    </wsam:Addressing>
+  </wsp:Policy>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:14000/Merchant/requestFinancialOperationWS</con:endpoint><con:endpoint>http://HOME-PC:14000/Merchant/requestFinancialOperationWS</con:endpoint><con:endpoint>http://HOME-PC:14000/mockMerchantFinancialOperationWSPortBinding</con:endpoint><con:endpoint>http://HOME-PC:8080/</con:endpoint><con:endpoint>http://HOME-PC:8088/Merchant/requestFinancialOperationWS</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="requestFinancialOperation" bindingOperationName="requestFinancialOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="1b61b92d-1ddc-440b-aa9b-f1fcf421dafe"><con:settings/><con:call name="Request 1" useWsAddressing="true" id="df2a7daf-b015-496f-9699-efc9f74f30df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:14000/Merchant/requestFinancialOperationWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fin="http://financial.services.merchant.channelmanagermsp.sibs/">
+	<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+		<wsa:Action>http://172.19.18.29/MsgSimulatorBackEnd/webservice/MBWay.MerchantFinancialOperationResponse/SimulCER/FinancialOperationAsyncResult</wsa:Action>
+		<wsa:ReplyTo>
+			<wsa:Address>http://172.19.18.29/MsgSimulatorBackEnd/webservice/MBWay.MerchantFinancialOperationResponse/SimulCER/FinancialOperationAsyncResult</wsa:Address>
+			<wsa:ReferenceParameters/>
+		</wsa:ReplyTo>
+		<wsa:From>
+			<wsa:Address/>
+		</wsa:From>
+		<wsa:MessageID/>
+	</soapenv:Header>
+	<soapenv:Body>
+		<fin:requestFinancialOperation>
+			<arg0>
+				<messageType>N0003</messageType>
+				<!--Optional:-->
+				<aditionalData>sdfd</aditionalData>
+				<alias>
+					<aliasName>351#913519801</aliasName>
+					<aliasTypeCde>001</aliasTypeCde>
+				</alias>
+				<financialOperation>
+					<amount>200</amount>
+					<currencyCode>9782</currencyCode>
+					<operationTypeCode>022</operationTypeCode>
+					<merchantOprId>2353</merchantOprId>
+				</financialOperation>
+				<!--Optional:-->
+				<merchant>
+					<iPAddress>255.255.255.255</iPAddress>
+					<posId>24162</posId>
+				</merchant>
+				<messageProperties>
+					<channel>01</channel>
+					<apiVersion>1</apiVersion>
+					<channelTypeCode>VPOS</channelTypeCode>
+					<networkCode>MULTIB</networkCode>
+					<serviceType>01</serviceType>
+					<timestamp>2015-05-07T14:30:18.6254363+01:00</timestamp>
+				</messageProperties>
+			</arg0>
+		</fin:requestFinancialOperation>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="FinancialOperationAsyncResultPortBinding" type="wsdl" bindingName="{http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest}FinancialOperationAsyncResultPortBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl" id="7c8d38e5-9c35-495b-ab03-7e54c6be54b0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl"><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FinancialOperationAsyncResultService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:i0="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:import namespace="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest" location="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl=wsdl1"/>
+  <wsdl:types/>
+  <wsdl:service name="FinancialOperationAsyncResultService">
+    <wsdl:port name="FinancialOperationAsyncResultPortBinding" binding="i0:FinancialOperationAsyncResultPortBinding">
+      <soap:address location="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl=wsdl1</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://webservices.sibsmerchant.com/FinancialOperationAsyncResult/financialOperationResultRequest" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:i0="http://webservices.sibsmerchant.com/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:import namespace="http://webservices.sibsmerchant.com/" location="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl=wsdl0"/>
+  <wsdl:types/>
+  <wsdl:binding name="FinancialOperationAsyncResultPortBinding" type="i0:IFinancialOperationAsyncResult">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="financialOperationResult">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="FinancialOperationResultRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="financialOperationResultResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?wsdl=wsdl0</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://webservices.sibsmerchant.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://webservices.sibsmerchant.com/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://webservices.sibsmerchant.com/Imports">
+      <xsd:import schemaLocation="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd0" namespace="http://webservices.sibsmerchant.com/"/>
+      <xsd:import schemaLocation="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd2"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="FinancialOperationResultRequest">
+    <wsdl:part name="parameters" element="tns:financialOperationResult"/>
+  </wsdl:message>
+  <wsdl:message name="financialOperationResultResponse">
+    <wsdl:part name="parameters" element="tns:financialOperationResultResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IFinancialOperationAsyncResult">
+    <wsdl:operation name="financialOperationResult">
+      <wsdl:input wsaw:Action="" name="FinancialOperationResultRequest" message="tns:FinancialOperationResultRequest"/>
+      <wsdl:output wsaw:Action="" name="financialOperationResultResponse" message="tns:financialOperationResultResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://webservices.sibsmerchant.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.sibsmerchant.com/">
+  <xs:import schemaLocation="http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd2"/>
+  <xs:element name="financialOperationResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="arg0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="financialOperationResultResponse">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RequestFinancialOperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:int"/>
+      <xs:element minOccurs="0" name="currencyCode" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="merchantOperationID" nillable="true" type="xs:string"/>
+      <xs:element name="statusCode" nillable="true" type="xs:string"/>
+      <xs:element name="timestamp" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestFinancialOperationResult" nillable="true" type="RequestFinancialOperationResult"/>
+  <xs:element name="arg0" nillable="true" type="RequestFinancialOperationResult"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc?xsd=xsd1</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+  <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+  <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+  <xs:element name="byte" nillable="true" type="xs:byte"/>
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+  <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+  <xs:element name="double" nillable="true" type="xs:double"/>
+  <xs:element name="float" nillable="true" type="xs:float"/>
+  <xs:element name="int" nillable="true" type="xs:int"/>
+  <xs:element name="long" nillable="true" type="xs:long"/>
+  <xs:element name="QName" nillable="true" type="xs:QName"/>
+  <xs:element name="short" nillable="true" type="xs:short"/>
+  <xs:element name="string" nillable="true" type="xs:string"/>
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+  <xs:element name="char" nillable="true" type="tns:char"/>
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int"/>
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration"/>
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid"/>
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName"/>
+  <xs:attribute name="Id" type="xs:ID"/>
+  <xs:attribute name="Ref" type="xs:IDREF"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:50554/Services/Endpoints/FinancialOperationAsyncResultService.svc</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="financialOperationResult" bindingOperationName="financialOperationResult" type="Request-Response" outputName="financialOperationResultResponse" inputName="FinancialOperationResultRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="a4db46a4-f746-4dae-b93d-fcd027f9f4c6"><con:settings/><con:call name="Request 1" id="e60d0102-2ba7-4835-87e5-1fae8b0b6d17"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://merchant.domain/FinancialOperationAsyncResultService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.sibsmerchant.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:financialOperationResult>
+         <!--Optional:-->
+         <arg0>
+            <amount>?</amount>
+            <currencyCode>?</currencyCode>
+            <merchantOperationID>?</merchantOperationID>
+            <statusCode>?</statusCode>
+            <timestamp>?</timestamp>
+            <token>?</token>
+         </arg0>
+      </web:financialOperationResult>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="FinancialOperationAsyncResultPortBinding TestSuite" id="314489c7-440f-42c0-b247-a5968263fe12"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="financialOperationResult TestCase" searchProperties="true" id="f19de5cd-539e-46ae-92aa-e29e7111e222"><con:settings/><con:testStep type="request" name="financialOperationResult" id="c75e971b-6545-4f70-969e-2fc07dbe0aee"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FinancialOperationAsyncResultPortBinding</con:interface><con:operation>financialOperationResult</con:operation><con:request name="financialOperationResult" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="750e1aad-ec19-4fb0-a240-8c6c43d7bffe"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://enderecoresposta.pt</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<ns2:financialOperationResult xmlns:ns2="http://webservices.sibsmerchant.com/">
+			<arg0>
+				<amount>${amount}</amount>
+				<currencyCode>${currencyCode}</currencyCode>
+				<merchantOperationID>${merchantOprId}</merchantOperationID>
+				<statusCode>${status}</statusCode>
+				<timestamp>${=javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(GregorianCalendar.getInstance())}</timestamp>
+				<token>${token}</token>
+			</arg0>
+		</ns2:financialOperationResult>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>sleep(10000)</con:setupScript><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="14000" path="/Merchant/requestFinancialOperationWS" host="HOME-PC" name="MerchantFinancialOperationWSPortBinding MockService" outgoingWss="" id="acfe6dd5-74eb-44df-9bac-8a7d0d440c7e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-version">true</con:setting></con:settings><con:properties/><con:mockOperation name="requestFinancialOperation" interface="MerchantFinancialOperationWSPortBinding" operation="requestFinancialOperation" id="73284f2b-09a3-4929-b7d6-b0ff7e0a171d"><con:settings/><con:defaultResponse>Response Normal</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath/><con:response name="Response Normal" httpResponseStatus="200" encoding="UTF-8" useWsAddressing="false" outgoingWss="" id="48f3f0de-d6c7-4d7c-ae51-4dfc8a12450e"><con:settings/><con:script><![CDATA[import com.eviware.soapui.support.types.StringToObjectMap 
+import com.eviware.soapui.impl.wsdl.teststeps.WsdlTestRequestStep
+
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context)
+def holder = groovyUtils.getXmlHolder(mockRequest.requestContent)
+def merchantOprId = holder['//financialOperation/merchantOprId']
+def amount = holder['//financialOperation/amount']
+def currencyCode = holder['//financialOperation/currencyCode']
+def operationTypeCode = holder['//financialOperation/operationTypeCode']
+def token = java.util.UUID.randomUUID()
+def address = holder.getNodeValue("//wsa:ReplyTo/wsa:Address/text()")
+def status = "000"
+def senAsyncResponse = true
+
+context.setProperty("merchantOprId", merchantOprId)
+context.setProperty("amount", amount)
+context.setProperty("currencyCode", currencyCode)
+context.setProperty("token", token)
+
+def date = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(GregorianCalendar.getInstance())
+context.setProperty("date", date);
+
+if (operationTypeCode == '022' && amount == '1000'){
+	status = "122"
+}
+
+if (operationTypeCode == '022' && amount == '5000'){
+	senAsyncResponse = false // Sem resposta
+}
+
+if (operationTypeCode == '022' && amount == '6000'){
+	throw new Exception('amount to abort') // Aborta a operação
+}
+
+if (operationTypeCode == '048'){
+	senAsyncResponse = false // Anulação não tem resposta assíncrona
+}
+
+
+if (senAsyncResponse){
+	def map = new StringToObjectMap()
+	map.put("merchantOprId", merchantOprId)
+	map.put("amount", amount)
+	map.put("currencyCode", currencyCode)
+	map.put("token", token)
+	map.put("status", status)
+	
+	def testsuite = context.mockService.project.getTestSuiteByName("FinancialOperationAsyncResultPortBinding TestSuite") 
+	def testcase = testsuite.getTestCaseByName("financialOperationResult TestCase") 
+	def testrequest = (WsdlTestRequestStep)testcase.getTestStepsOfType(WsdlTestRequestStep.class).get(0)
+	
+	testrequest.testRequest.setEndpoint(address) 
+	
+	testcase.run(map, true)
+}
+]]></con:script><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fin="http://financial.services.merchant.channelmanagermsp.sibs/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <fin:requestFinancialOperationResponse>
+         <return>
+            <amount>${amount}</amount>
+            <currencyCode>${currencyCode}</currencyCode>
+            <merchantOperationID>${merchantOprId}</merchantOperationID>
+            <statusCode>000</statusCode>
+            <timestamp>${date}</timestamp>
+            <token>${token}</token>
+         </return>
+      </fin:requestFinancialOperationResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

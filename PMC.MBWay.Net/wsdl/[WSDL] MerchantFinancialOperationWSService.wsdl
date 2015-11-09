@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MerchantFinancialOperationWSService"
+	targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/"
+	xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:tns="http://financial.services.merchant.channelmanagermsp.sibs/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<types>
+		<xsd:schema version="1.0"
+			targetNamespace="http://financial.services.merchant.channelmanagermsp.sibs/"
+			xmlns:tns="http://financial.services.merchant.channelmanagermsp.sibs/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+			<xsd:element name="requestFinancialOperation" type="tns:requestFinancialOperation" />
+
+			<xsd:element name="requestFinancialOperationResponse" type="tns:requestFinancialOperationResponse" />
+
+			<xsd:complexType name="requestFinancialOperation">
+				<xsd:sequence>
+					<xsd:element name="arg0" type="tns:requestFinancialOperationRequest"
+						minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="requestFinancialOperationRequest">
+				<xsd:sequence>
+					<xsd:element name="messageType" type="xsd:string"
+						minOccurs="1" default="N0003" maxOccurs="1"/>
+					<xsd:element name="aditionalData" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="alias" type="tns:alias" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="financialOperation" type="tns:financialOperation" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="referencedFinancialOperation" type="tns:financialOperation"
+						minOccurs="0" />
+					<xsd:element name="merchant" type="tns:merchant"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="messageProperties" type="tns:messageProperties"
+						minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="alias">
+				<xsd:sequence>
+					<xsd:element name="aliasName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="aliasTypeCde" maxOccurs="1"
+						minOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+
+								<xsd:length value="3"></xsd:length>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="financialOperation">
+				<xsd:sequence>
+					<xsd:element name="amount" type="xsd:int" maxOccurs="1" minOccurs="1"/>
+					<xsd:element name="currencyCode" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+					<xsd:element name="operationTypeCode" type="xsd:string"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="merchantOprId" type="xsd:string"
+						minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="merchant">
+				<xsd:sequence>
+					<xsd:element name="iPAddress" minOccurs="1"
+						maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="15"></xsd:maxLength>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="posId" minOccurs="1"
+						maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="9"></xsd:maxLength>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="messageProperties">
+				<xsd:sequence>
+					<xsd:element name="channel" minOccurs="1"
+						default="01" maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="2"></xsd:maxLength>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="apiVersion" minOccurs="1"
+						default="1" maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:maxLength value="5"></xsd:maxLength>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="channelTypeCode" type="xsd:string"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="networkCode" type="xsd:string"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="serviceType" type="xsd:string"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="timestamp" type="xsd:dateTime"
+						minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="requestFinancialOperationResponse">
+				<xsd:sequence>
+					<xsd:element name="return" type="tns:requestFinancialOperationResult"
+						minOccurs="1" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="requestFinancialOperationResult">
+				<xsd:sequence>
+					<xsd:element name="amount" type="xsd:int" minOccurs="0" />
+					<xsd:element name="currencyCode" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="merchantOperationID" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="statusCode" minOccurs="1"
+						maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+
+								<xsd:length value="3"></xsd:length>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="timestamp" type="xsd:dateTime"
+						minOccurs="1" maxOccurs="1"/>
+					<xsd:element name="token" type="xsd:string" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+
+	</types>
+
+
+	<message name="requestFinancialOperationResponse">
+		<part name="parameters" element="tns:requestFinancialOperationResponse">
+		</part>
+	</message>
+	<message name="requestFinancialOperation">
+		<part name="parameters" element="tns:requestFinancialOperation">
+		</part>
+	</message>
+	<portType name="MerchantFinancialOperationWS">
+		<operation name="requestFinancialOperation">
+			<input message="tns:requestFinancialOperation"
+				wsaw:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest"
+				wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationRequest">
+			</input>
+			<output message="tns:requestFinancialOperationResponse"
+				wsam:Action="http://financial.services.merchant.channelmanagermsp.sibs/MerchantFinancialOperationWS/requestFinancialOperationResponse">
+			</output>
+		</operation>
+	</portType>
+
+
+	<binding name="MerchantFinancialOperationWSPortBinding" type="tns:MerchantFinancialOperationWS">
+		<wsaw:UsingAddressing required="false" />
+		<wsp:PolicyReference
+			URI="#MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy" />
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="requestFinancialOperation">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+
+	<service name="MerchantFinancialOperationWSService">
+		<port name="MerchantFinancialOperationWSPort" binding="tns:MerchantFinancialOperationWSPortBinding">
+			<soap:address
+				location="http://127.0.0.1:14000/Merchant/requestFinancialOperationWS" />
+		</port>
+	</service>
+	<wsp:Policy
+		wsu:Id="MerchantFinancialOperationWSPortBinding_WSAM_Addressing_Policy">
+		<wsam:Addressing wsp:Optional="true">
+			<wsp:Policy />
+		</wsam:Addressing>
+	</wsp:Policy>
+</definitions>
