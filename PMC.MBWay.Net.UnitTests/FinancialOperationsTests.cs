@@ -20,7 +20,7 @@ namespace PMC.MBWay.Net.UnitTests
         protected requestFinancialOperationResult currentResult;
 
         [TestMethod]
-        public void TestPurchase()
+        public void FinancialOperation_Purchase()
         {
             var request = GetRequest();
 
@@ -49,7 +49,7 @@ namespace PMC.MBWay.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPurchaseAuthorization()
+        public void FinancialOperation_PurchaseAuthorization()
         {
             var request = GetRequest();
 
@@ -77,9 +77,9 @@ namespace PMC.MBWay.Net.UnitTests
             currentResult = result;
         }
         [TestMethod]
-        public void TestPurchaseAuthorizationAnnulment()
+        public void FinancialOperation_PurchaseAuthorization_Annulment()
         {
-            TestPurchaseAuthorization();
+            FinancialOperation_PurchaseAuthorization();
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
@@ -113,9 +113,9 @@ namespace PMC.MBWay.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPurchaseAuthorizationCancellation()
+        public void FinancialOperation_PurchaseAuthorization_Cancel()
         {
-            TestPurchaseAuthorization();
+            FinancialOperation_PurchaseAuthorization();
 
             ApprovalSleep(); // allow for aproval in app and async callback
 
@@ -152,9 +152,9 @@ namespace PMC.MBWay.Net.UnitTests
 
 
         [TestMethod]
-        public void TestPurchaseAfterAuthorization()
+        public void FinancialOperation_PurchaseAfterAuthorization()
         {
-            TestPurchaseAuthorization();
+            FinancialOperation_PurchaseAuthorization();
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
@@ -192,9 +192,9 @@ namespace PMC.MBWay.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPurchaseAnnulment()
+        public void FinancialOperation_Purchase_Annulment()
         {
-            TestPurchase();
+            FinancialOperation_Purchase();
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
@@ -228,9 +228,9 @@ namespace PMC.MBWay.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPurchaseReturn()
+        public void FinancialOperation_Purchase_Return()
         {
-            TestPurchase();
+            FinancialOperation_Purchase();
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
@@ -267,9 +267,9 @@ namespace PMC.MBWay.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPurchaseAfterAuthorizationReturn()
+        public void FinancialOperation_PurchaseAfterAuthorization_Return()
         {
-            TestPurchaseAfterAuthorization();
+            FinancialOperation_PurchaseAfterAuthorization();
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);

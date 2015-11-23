@@ -61,14 +61,23 @@ namespace PMC.MBWay.Net.UnitTests
         }
         protected MBWayConfig GetConfig()
         {
+
             return new MBWayConfig
             {
-                CertificatePass = ConfigurationManager.AppSettings["CERTIFICATE_PASS"],
-                CertificatePath = ConfigurationManager.AppSettings["CERTIFICATE_PATH"],
+                CertificateThumbprint = ConfigurationManager.AppSettings["CERTIFICATE_THUMBPRINT"],
                 MerchantIP = ConfigurationManager.AppSettings["MERCHANT_IP"],
                 MerchantPOSID = ConfigurationManager.AppSettings["MERCHANT_POSID"],
                 AsyncServiceEndpoint = ConfigurationManager.AppSettings["ASYNC_SERVICE_ENDPOINT"]
             };
+
+            //return new MBWayConfig
+            //{
+            //    CertificatePass = ConfigurationManager.AppSettings["CERTIFICATE_PASS"],
+            //    CertificatePath = ConfigurationManager.AppSettings["CERTIFICATE_PATH"],
+            //    MerchantIP = ConfigurationManager.AppSettings["MERCHANT_IP"],
+            //    MerchantPOSID = ConfigurationManager.AppSettings["MERCHANT_POSID"],
+            //    AsyncServiceEndpoint = ConfigurationManager.AppSettings["ASYNC_SERVICE_ENDPOINT"]
+            //};
         }
     }
 }

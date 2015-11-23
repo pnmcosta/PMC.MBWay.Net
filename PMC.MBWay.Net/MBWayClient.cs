@@ -17,6 +17,7 @@ using System.ServiceModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections;
 using System.ServiceModel.Channels;
+using System.Text.RegularExpressions;
 
 namespace PMC.MBWay.Net
 {
@@ -44,7 +45,7 @@ namespace PMC.MBWay.Net
         };
 
         public MBWayConfig CurrentConfig { get { return _config; } }
-      
+
         public MBWayClient(MBWayConfig config)
             : this(config, false)
         {
@@ -54,15 +55,76 @@ namespace PMC.MBWay.Net
         {
             _config = config;
             _sandbox = sandbox;
-            _certificate = new X509Certificate2(_config.CertificatePath, _config.CertificatePass,
-                                                        X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet |
-                                                        X509KeyStorageFlags.PersistKeySet);
 
+            InitCertificate();
             InitFactory(ref _financialOperationFactory);
             InitFactory(ref _removeMerchantAliasFactory);
             InitFactory(ref _createMerchantAliasFactory);
         }
 
+        private void InitCertificate()
+        {
+            if (!string.IsNullOrEmpty(_config.CertificatePath))
+            {
+                try
+                {
+                    _certificate = new X509Certificate2(_config.CertificatePath, _config.CertificatePass,
+                                      X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet |
+                                      X509KeyStorageFlags.PersistKeySet);
+                }
+                catch
+                {
+                    throw new ApplicationException(string.Format("Certificate in path: '{0}' not found or password is invalid.", _config.CertificatePath));
+                }
+            }
+            else if (!string.IsNullOrEmpty(_config.CertificateThumbprint))
+            {
+                _config.CertificateThumbprint = Regex.Replace(_config.CertificateThumbprint, @"[^\da-zA-z]", string.Empty).ToUpper();
+
+                X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+                try
+                {
+                    store.Open(OpenFlags.ReadOnly);
+                    var r = store.Certificates.Find(X509FindType.FindByThumbprint, _config.CertificateThumbprint, false);
+                    if (r.Count > 0)
+                        _certificate = r[0];
+                }
+                catch
+                {
+                    _certificate = null;
+                }
+                finally
+                {
+                    if (store != null)
+                        store.Close();
+                }
+
+                if (_certificate == null)
+                {
+                    throw new ApplicationException(string.Format("Certificate with thumbprint: '{0}' not found in the local machine personal store.", _config.CertificateThumbprint));
+                }
+
+                // check private key permission
+                bool valid = false;
+                try
+                {
+                    valid = _certificate.HasPrivateKey && _certificate.PrivateKey != null;
+                }
+                catch
+                {
+                    valid = false;
+                }
+
+                if (!valid)
+                {
+                    throw new ApplicationException(string.Format("Certificate with thumbprint: '{0}' private key is inaccessible, double check it's permissions for the current application user.", _config.CertificateThumbprint));
+                }
+            }
+            else
+            {
+                throw new ApplicationException("You must either set a Certificate Path and Password combination or a Thumbprint of the certificate in the local machine personal store with the appropriate permissions.");
+            }
+        }
 
         public requestFinancialOperationResult RequestFinancialOperation(requestFinancialOperationRequest request)
         {
@@ -143,7 +205,8 @@ namespace PMC.MBWay.Net
         private void InitFactory<TChannel>(ref ChannelFactory<TChannel> channelFactory)
         {
             channelFactory = new ChannelFactory<TChannel>(this.GetBinding<TChannel>(), this.GetEndpoint<TChannel>());
-            channelFactory.Credentials.ClientCertificate.Certificate = _certificate;
+            if (_certificate != null)
+                channelFactory.Credentials.ClientCertificate.Certificate = _certificate;
         }
         private string GetEndpoint<TChannelType>()
         {

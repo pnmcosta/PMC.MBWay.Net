@@ -17,11 +17,17 @@ namespace PMC.MBWay.Net
     public class MBWayConfig
     {
         private string _certificatePath;
+        private string _certificateThumbprint;
         private string _certificatePass;
         private string _merchantPOSID;
         private string _merchantIP;
         private string _asyncServiceEndpoint;
 
+        public string CertificateThumbprint
+        {
+            get { return _certificateThumbprint; }
+            set { _certificateThumbprint = value; }
+        }
         public string CertificatePath
         {
             get { return _certificatePath; }
@@ -44,7 +50,7 @@ namespace PMC.MBWay.Net
             get { return _asyncServiceEndpoint; }
             set { _asyncServiceEndpoint = value; }
         }
-       
+
         public string MerchantIP
         {
             get { return _merchantIP; }
@@ -52,15 +58,25 @@ namespace PMC.MBWay.Net
         }
         public MBWayConfig()
         {
-            
+
         }
-        public MBWayConfig(string certificatePath, string certificatePass, string merchantPOSID, string merchantIP, string asyncServiceEndpoint)
+        private MBWayConfig(string certificateThumbprint, string certificatePath, string certificatePass, string merchantPOSID, string merchantIP, string asyncServiceEndpoint)
         {
+            _certificateThumbprint = certificateThumbprint;
             _certificatePath = certificatePath;
             _certificatePass = certificatePass;
             _merchantPOSID = merchantPOSID;
             _merchantIP = merchantIP;
             _asyncServiceEndpoint = asyncServiceEndpoint;
+        }
+        public MBWayConfig(string certificateThumbprint, string merchantPOSID, string merchantIP, string asyncServiceEndpoint)
+            : this(certificateThumbprint, string.Empty, string.Empty, merchantPOSID, merchantIP, asyncServiceEndpoint)
+        {
+        }
+
+        public MBWayConfig(string certificatePath, string certificatePass, string merchantPOSID, string merchantIP, string asyncServiceEndpoint)
+            : this(string.Empty, certificatePath, certificatePass, merchantPOSID, merchantIP, asyncServiceEndpoint)
+        {
         }
     }
 }

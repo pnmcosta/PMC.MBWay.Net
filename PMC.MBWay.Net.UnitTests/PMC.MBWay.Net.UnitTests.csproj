@@ -63,6 +63,7 @@
     <Compile Include="BaseIntegrationTests.cs" />
     <Compile Include="FinancialOperationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMC.MBWay.Net\PMC.MBWay.Net.csproj">
