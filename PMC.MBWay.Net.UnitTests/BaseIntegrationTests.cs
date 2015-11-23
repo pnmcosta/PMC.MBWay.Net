@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PMC.MBWay.Net.API.FinancialOperations;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,24 @@ namespace PMC.MBWay.Net.UnitTests
 {
     public class BaseIntegrationTests
     {
-        protected MBWayClient client;
+        private MBWayClient client;
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
 
         protected MBWayClient GetClient()
         {
@@ -32,7 +50,14 @@ namespace PMC.MBWay.Net.UnitTests
         }
         protected void ApprovalSleep()
         {
-            Thread.Sleep(int.Parse(ConfigurationManager.AppSettings["APPROVAL_SLEEP"]));
+            Thread.Sleep(int.Parse(ConfigurationManager.AppSettings["TEST_APPROVAL_SLEEP"]));
+        }
+        protected string TestAlias
+        {
+            get
+            {
+               return ConfigurationManager.AppSettings["TEST_ALIAS"];
+            }
         }
         protected MBWayConfig GetConfig()
         {

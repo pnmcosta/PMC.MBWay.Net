@@ -76,9 +76,44 @@ namespace PMC.MBWay.Net.UnitTests
 
             currentResult = result;
         }
+        [TestMethod]
+        public void TestPurchaseAuthorizationAnnulment()
+        {
+            TestPurchaseAuthorization();
+
+            Assert.IsNotNull(currentResult);
+            Assert.IsTrue(currentResult.IsValid);
+
+            var request = GetRequest();
+            request.referencedFinancialOperation = new financialOperation
+            {
+                amount = currentResult.amount,
+                currencyCode = currentResult.currencyCode,
+                merchantOprId = currentResult.merchantOperationID,
+                operationTypeCode = FinancialOperationTypes.PURCHASE_AUTHORIZATION
+            };
+
+
+            var newOperationId = MBWayClient.GetUniqID();
+            request.financialOperation = new financialOperation
+            {
+                amount = currentResult.amount,
+                currencyCode = currentResult.currencyCode,
+                merchantOprId = newOperationId,
+                operationTypeCode = FinancialOperationTypes.ANNULMENT
+            };
+
+            var result = this.GetClient().RequestFinancialOperation(request);
+
+            Assert.IsTrue(result.IsValid);
+            Assert.AreEqual(currentResult.amount, result.amount);
+            Assert.AreEqual(newOperationId, result.merchantOperationID);
+            Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
+            Assert.IsNotNull(result.timestamp);
+        }
 
         [TestMethod]
-        public void TestAuthorizationCancellation()
+        public void TestPurchaseAuthorizationCancellation()
         {
             TestPurchaseAuthorization();
 
@@ -112,7 +147,6 @@ namespace PMC.MBWay.Net.UnitTests
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
 
@@ -152,8 +186,9 @@ namespace PMC.MBWay.Net.UnitTests
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
+
+            currentResult = result;
         }
 
         [TestMethod]
@@ -163,8 +198,6 @@ namespace PMC.MBWay.Net.UnitTests
 
             Assert.IsNotNull(currentResult);
             Assert.IsTrue(currentResult.IsValid);
-
-            ApprovalSleep(); // allow for aproval in app and async callback
 
             var request = GetRequest();
             request.referencedFinancialOperation = new financialOperation
@@ -191,7 +224,6 @@ namespace PMC.MBWay.Net.UnitTests
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
 
@@ -231,17 +263,52 @@ namespace PMC.MBWay.Net.UnitTests
             Assert.AreEqual(currentResult.amount, result.amount);
             Assert.AreEqual(newOperationId, result.merchantOperationID);
             Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
-            Assert.IsTrue(!string.IsNullOrEmpty(result.token));
             Assert.IsNotNull(result.timestamp);
         }
 
+        [TestMethod]
+        public void TestPurchaseAfterAuthorizationReturn()
+        {
+            TestPurchaseAfterAuthorization();
+
+            Assert.IsNotNull(currentResult);
+            Assert.IsTrue(currentResult.IsValid);
+
+            var request = GetRequest();
+            request.referencedFinancialOperation = new financialOperation
+            {
+                amount = currentResult.amount,
+                currencyCode = currentResult.currencyCode,
+                merchantOprId = currentResult.merchantOperationID,
+                operationTypeCode = FinancialOperationTypes.PURCHASE_AFTER_AUTHORIZATION
+            };
+
+
+            var newOperationId = MBWayClient.GetUniqID();
+            request.financialOperation = new financialOperation
+            {
+                amount = currentResult.amount,
+                currencyCode = currentResult.currencyCode,
+                merchantOprId = newOperationId,
+                operationTypeCode = FinancialOperationTypes.PURCHASE_RETURN
+            };
+
+
+            var result = this.GetClient().RequestFinancialOperation(request);
+
+            Assert.IsTrue(result.IsValid);
+            Assert.AreEqual(currentResult.amount, result.amount);
+            Assert.AreEqual(newOperationId, result.merchantOperationID);
+            Assert.AreEqual(currentResult.currencyCode, result.currencyCode);
+            Assert.IsNotNull(result.timestamp);
+        }
         public requestFinancialOperationRequest GetRequest()
         {
             return new requestFinancialOperationRequest
             {
                 alias = new alias
                 {
-                    aliasName = "351#929252028",
+                    aliasName = this.TestAlias,
                     aliasTypeCde = AliasTypes.CELLPHONE
                 },
 
@@ -260,7 +327,7 @@ namespace PMC.MBWay.Net.UnitTests
                     serviceType = "01",
                 },
 
-                aditionalData = "PMC.MBWay.Net.UnitTests"
+                aditionalData = this.TestContext.TestName
             };
         }
     }

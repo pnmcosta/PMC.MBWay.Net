@@ -20,7 +20,7 @@ namespace PMC.MBWay.Net.API.FinancialOperations
         {
             get
             {
-                return this.statusCode == "000" || this.statusCode == "020";
+                return this.statusCode == ReturnStatusCodes.SUCCESS || this.statusCode == ReturnStatusCodes.REJECTED_FINANCIAL_OPERATION;
             }
         }
     }

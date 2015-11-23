@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\CurrencyCodes.cs" />
+    <Compile Include="Constants\ReturnStatusCodes.cs" />
     <Compile Include="MBWayAsyncServiceBase.cs" />
     <Compile Include="MBWayClient.cs" />
     <Compile Include="MBWayConfig.cs" />

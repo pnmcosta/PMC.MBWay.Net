@@ -28,6 +28,7 @@ namespace PMC.MBWay.Net
 
         private MBWayConfig _config;
         private bool _sandbox;
+        X509Certificate2 _certificate;
 
         private Dictionary<bool, string> _endPoints = new Dictionary<bool, string>
         {
@@ -42,8 +43,8 @@ namespace PMC.MBWay.Net
             { typeof(MerchantFinancialOperationWS), "Merchant/requestFinancialOperationWS" }
         };
 
-        X509Certificate2 _certificate;
-
+        public MBWayConfig CurrentConfig { get { return _config; } }
+      
         public MBWayClient(MBWayConfig config)
             : this(config, false)
         {
