@@ -4,7 +4,7 @@
 ## Installation
 Build the solution in Release mode and reference the main PMC.MBWay.Net.dll in your ASP.net project.
 
-Or download the DLL from the [latest release](https://github.com/pnmcosta/PMC.MBWay.Net/releases/tag/v1.0.0) package and include in your .NET package
+Or download the DLL from the [latest release](https://github.com/pnmcosta/PMC.MBWay.Net/releases) package and include in your .NET package
 
 ## Configuring the Async service
 Create a WCF service (.svc) in your ASP.net project, that inherits from the base class [PMC.MBWay.Net.MBWayAsyncServiceBase](https://github.com/pnmcosta/PMC.MBWay.Net/blob/master/PMC.MBWay.Net/MBWayAsyncServiceBase.cs) and implement the methods ProcessCreateAliasResult and ProcessFinancialOperationResult so you can handle the MBWAY responses with your custom code, like in [this example](https://github.com/pnmcosta/PMC.MBWay.Net/blob/master/PMC.MBWay.Net.TestSite/MBWayAsyncService.svc.cs) where a log file is created with the serialized result.
